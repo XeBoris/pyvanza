@@ -11,9 +11,9 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = ['pandas']
 
-setup_requirements = [ ]
+setup_requirements = []
 
 test_requirements = [ ]
 
@@ -49,7 +49,7 @@ setup(
     zip_safe=False,
     entry_points={
             'console_scripts': [
-                'pyvanza=pyvanza.pyvanza:pyvanza_first'
+                'pyvanza=pyvanza.pyvanza:pyvanza_standalone'
             ]
             },
 )
