@@ -15,7 +15,7 @@ requirements = ['pandas']
 
 setup_requirements = []
 
-test_requirements = [ ]
+test_requirements = []
 
 setup(
     author="Boris Bauermeister",
@@ -39,8 +39,15 @@ setup(
     long_description=readme + '\n\n' + history,
     include_package_data=True,
     keywords='pyvanza',
+    #name='pyvanza',
+    ##packages=find_packages(include=['.pyvanca.module']),
+
+    #package_dir={'': 'pyvanza'},
+    #packages=find_packages(where='pyvanza'),
+
     name='pyvanza',
-    packages=find_packages(include=['pyvanza']),
+    packages=find_packages(include=['pyvanza', 'pyvanza.module']),
+
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
@@ -49,7 +56,7 @@ setup(
     zip_safe=False,
     entry_points={
             'console_scripts': [
-                'pyvanza=pyvanza.pyvanza:pyvanza_standalone'
-            ]
+                'pyvanza = pyvanza.pyvanza:pyvanza_standalone'
+                ]
             },
 )

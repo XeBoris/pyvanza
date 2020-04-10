@@ -1,28 +1,11 @@
 # -*- coding: utf-8 -*-
-import urllib.request
-import json
-import datetime
-from pyvanza import AvanzaScrapper
+from pyvanza.module.pyvanzascraper import AvanzaScraper
 import pickle
-import pandas as pd
 import argparse
 
 """Main module."""
-
-class pyvanza():
-
-    def __init__(self):
-        #constructor
-        print("Init")
-
-    def SetStorageManager(self, storagem):
-        self.storagem = storagem
-
-
-
-
 def pyvanza_standalone():
-    parser = argparse.ArgumentParser(description="Run your favourite aDMIX")
+    parser = argparse.ArgumentParser(description="Run the pyvanza scraper")
 
     parser.add_argument('--fond', dest="fond", type=str,
                         help="An Avanza URL you are interested in")
@@ -35,16 +18,17 @@ def pyvanza_standalone():
 
     args = parser.parse_args()
 
-    #Init the scrapper
-    avs = AvanzaScrapper()
+    #Init the scraper
+    avs = AvanzaScraper()
 
     #Try/except to get a dataframe with the values:
     try:
         values = avs.GetFond(args.fond, args.beg, args.end)
+        print(values)
         with open(f'{args.output}.pkl', 'wb') as handle:
             pickle.dump(values, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-        nb = len(values['time_series'])
+        nb = len(values['time_series'][0])
         print()
         print(f"A dataset with {nb} data points is extracted from {args.fond} and stored in {args.output}.pkl")
         print()

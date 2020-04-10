@@ -6,4 +6,4 @@ __author__ = """Boris Bauermeister"""
 __email__ = 'Boris.Bauermeister@gmail.com'
 __version__ = '0.1.0'
 
-from pyvanza.Scraper import AvanzaScrapper
+from pyvanza.module.pyvanzascraper import AvanzaScraper
